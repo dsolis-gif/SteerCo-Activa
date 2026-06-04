@@ -278,6 +278,26 @@ button { cursor: pointer; font-family: inherit; }
 .spine-tl-title { font-size:var(--text-xs); font-weight:700; color:var(--text-primary); margin-bottom:4px; text-transform:uppercase; letter-spacing:0.06em; line-height:1.3; }
 .spine-tl-desc { font-size:10px; color:var(--text-tertiary); line-height:1.4; max-width:120px; }
 
+/* ── AGENDA FULL ── */
+.agenda-full-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; width:100%; max-width:780px; }
+.agenda-full-item { display:flex; align-items:flex-start; gap:16px; padding:16px 20px; background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--brand); border-radius:var(--radius); transition:background .15s; }
+.agenda-full-item:hover { background:var(--surface-2); }
+[data-theme="dark"] .agenda-full-item { background:#141414; border-color:#242424; }
+.agenda-full-num { font-size:32px; font-weight:700; color:var(--brand); line-height:1; flex-shrink:0; min-width:44px; }
+.agenda-full-title { font-size:15px; font-weight:600; color:var(--text-primary); margin-bottom:4px; }
+.agenda-full-sub { font-size:12px; color:var(--text-tertiary); line-height:1.4; }
+@media (max-width:700px) { .agenda-full-grid { grid-template-columns:1fr; } }
+
+/* ── AGENDA ── */
+.agenda-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:8px; }
+.agenda-item { display:flex; align-items:flex-start; gap:10px; padding:12px 14px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); }
+[data-theme="dark"] .agenda-item { background:#141414; border-color:#242424; }
+.agenda-num { font-size:20px; font-weight:700; color:var(--brand); line-height:1; flex-shrink:0; min-width:28px; }
+.agenda-title { font-size:var(--text-sm); font-weight:600; color:var(--text-primary); margin-bottom:3px; }
+.agenda-sub { font-size:var(--text-xs); color:var(--text-tertiary); line-height:1.4; }
+@media (max-width:900px) { .agenda-grid { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:600px) { .agenda-grid { grid-template-columns:1fr; } }
+
 /* ── RESUMEN EJECUTIVO BAR ── */
 .exec-summary-bar { background: #0A0E12; border-left: 4px solid var(--brand); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 5px; }
 .exec-summary-eyebrow { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand); }
@@ -539,9 +559,9 @@ button { cursor: pointer; font-family: inherit; }
 
     <div class="content">
       <div class="dash-tabs">
-        <div class="dash-tab active"   onclick="showTab('overview',this)">01 · Resumen</div>
-        <div class="dash-tab"          onclick="showTab('churn',this)">02 · Análisis Churn</div>
-        <div class="dash-tab"          onclick="showTab('resumen',this)">03 · KPIs</div>
+        <div class="dash-tab active"   onclick="showTab('agenda',this)">01 · Agenda</div>
+        <div class="dash-tab"          onclick="showTab('resumen',this)">02 · KPIs</div>
+        <div class="dash-tab"          onclick="showTab('churn',this)">03 · Análisis Churn</div>
         <div class="dash-tab"          onclick="showTab('resultados',this)">04 · Resultados</div>
         <div class="dash-tab"          onclick="showTab('campanas',this)">05 · Campañas</div>
         <div class="dash-tab"          onclick="showTab('incidencias',this)">06 · Incidencias / SPINE</div>
@@ -550,131 +570,70 @@ button { cursor: pointer; font-family: inherit; }
       </div>
 
       <!-- ══════════════════════════════════════
-           TAB 01: RESUMEN EJECUTIVO
+           TAB 01: AGENDA
       ══════════════════════════════════════ -->
-      <div class="dash-panel active" id="dtab-overview" data-title="01 · Resumen Ejecutivo — Mayo 2026">
+      <div class="dash-panel active" id="dtab-agenda" data-title="Agenda — SteerCo Junio 2026">
 
-        <div class="exec-summary-bar" style="margin-bottom:24px;">
-          <div class="exec-summary-eyebrow">Resumen ejecutivo · Steering Committee · Junio 2026</div>
-          <div class="exec-summary-text">Mayo fue un mes marcado por la migración a SPINE, que afectó temporalmente la captación. A pesar de eso, los indicadores de calidad están en máximos históricos y junio arranca con dos lanzamientos estratégicos. Aquí el contexto completo.</div>
-        </div>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
-
-          <!-- RESULTADOS -->
-          <div class="chart-box" style="padding:20px;">
-            <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brand);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);">Resultados mayo 2026</div>
-            <div style="display:flex;flex-direction:column;gap:10px;">
-              <div style="display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--border);">
-                <span style="font-size:13px;color:var(--text-secondary);">AUM total</span>
-                <div style="text-align:right;"><span style="font-size:18px;font-weight:700;color:var(--brand);">$228.7M</span> <span style="font-size:12px;color:var(--pos);font-weight:600;">▲ +3.1%</span></div>
-              </div>
-              <div style="display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--border);">
-                <span style="font-size:13px;color:var(--text-secondary);">Clientes fondeados</span>
-                <div style="text-align:right;"><span style="font-size:18px;font-weight:700;">35,786</span> <span style="font-size:12px;color:var(--pos);font-weight:600;">▲ +0.4%</span></div>
-              </div>
-              <div style="display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--border);">
-                <span style="font-size:13px;color:var(--text-secondary);">Saldo promedio</span>
-                <div style="text-align:right;"><span style="font-size:18px;font-weight:700;">$6,392</span> <span style="font-size:12px;color:var(--pos);font-weight:600;">▲ +2.7%</span></div>
-              </div>
-              <div style="display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--border);">
-                <span style="font-size:13px;color:var(--text-secondary);">% Fondeo cuentas nuevas</span>
-                <div style="text-align:right;"><span style="font-size:18px;font-weight:700;color:var(--pos);">37.1%</span> <span style="font-size:12px;color:var(--pos);font-weight:600;">Mejor histórico</span></div>
-              </div>
-              <div style="display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;">
-                <span style="font-size:13px;color:var(--text-secondary);">% Fondeo acumulado</span>
-                <div style="text-align:right;"><span style="font-size:18px;font-weight:700;color:var(--warn);">18.8%</span> <span style="font-size:12px;color:var(--neg);font-weight:600;">▼ mínimo histórico</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:70vh;padding:20px;">
+          <div style="text-align:center;margin-bottom:36px;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--brand);margin-bottom:8px;">Steering Committee · Activa by Liverpool</div>
+            <div style="font-size:28px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;">5 de junio 2026</div>
+          </div>
+          <div class="agenda-full-grid">
+            <div class="agenda-full-item">
+              <div class="agenda-full-num">01</div>
+              <div class="agenda-full-body">
+                <div class="agenda-full-title">KPIs — Cierre mayo 2026</div>
+                <div class="agenda-full-sub">Resultados acumulados · Segmentos · Afectación SPINE</div>
               </div>
             </div>
-          </div>
-
-          <!-- AFECTACIÓN SPINE -->
-          <div style="background:#0A0E12;border-radius:var(--radius);padding:20px;">
-            <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brand);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.1);">Afectación SPINE</div>
-            <div style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.6;margin-bottom:16px;">El 30 de abril se migró exitosamente la base de datos al sistema SPINE. Durante la activación gradual se identificaron 4 incidencias que redujeron la captación de mayo.</div>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;">
-              <div style="background:rgba(204,51,51,0.2);border-radius:var(--radius-sm);padding:12px;text-align:center;">
-                <div style="font-size:22px;font-weight:700;color:white;">7,500</div>
-                <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:3px;text-transform:uppercase;letter-spacing:0.06em;">Aperturas perdidas</div>
-              </div>
-              <div style="background:rgba(204,51,51,0.2);border-radius:var(--radius-sm);padding:12px;text-align:center;">
-                <div style="font-size:22px;font-weight:700;color:white;">800</div>
-                <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:3px;text-transform:uppercase;letter-spacing:0.06em;">Clientes perdidos</div>
-              </div>
-              <div style="background:rgba(204,51,51,0.2);border-radius:var(--radius-sm);padding:12px;text-align:center;">
-                <div style="font-size:22px;font-weight:700;color:white;">$2.3M</div>
-                <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:3px;text-transform:uppercase;letter-spacing:0.06em;">AUM perdido</div>
+            <div class="agenda-full-item">
+              <div class="agenda-full-num">02</div>
+              <div class="agenda-full-body">
+                <div class="agenda-full-title">Análisis Churn</div>
+                <div class="agenda-full-sub">Primer diagnóstico · Tasas de fuga · Plan de acción</div>
               </div>
             </div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.6);background:rgba(26,158,90,0.15);border-left:3px solid var(--pos);padding:8px 12px;border-radius:0 4px 4px 0;">A partir del 6 de junio se reactivarán todos los flujos restantes bajo monitoreo constante.</div>
-          </div>
-        </div>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
-
-          <!-- ANÁLISIS CHURN -->
-          <div class="chart-box" style="padding:20px;">
-            <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brand);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);">Primer análisis de clientes churn</div>
-            <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:14px;">Este SteerCo incluye por primera vez un diagnóstico profundo de los clientes que ya salieron de la base activa. Los hallazgos son relevantes y urgentes.</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
-              <div style="padding:10px;background:rgba(204,51,51,0.05);border:1px solid rgba(204,51,51,0.15);border-radius:var(--radius-sm);text-align:center;">
-                <div style="font-size:22px;font-weight:700;color:var(--neg);">420</div>
-                <div style="font-size:11px;color:var(--text-secondary);margin-top:2px;">clientes alto valor perdidos</div>
-                <div style="font-size:11px;font-weight:700;color:var(--neg);">= 15% de la base · 36% anual</div>
-              </div>
-              <div style="padding:10px;background:rgba(212,130,10,0.05);border:1px solid rgba(212,130,10,0.2);border-radius:var(--radius-sm);text-align:center;">
-                <div style="font-size:22px;font-weight:700;color:var(--warn);">699</div>
-                <div style="font-size:11px;color:var(--text-secondary);margin-top:2px;">clientes valor medio perdidos</div>
-                <div style="font-size:11px;font-weight:700;color:var(--warn);">= 22% de la base · 53% anual</div>
+            <div class="agenda-full-item">
+              <div class="agenda-full-num">03</div>
+              <div class="agenda-full-body">
+                <div class="agenda-full-title">Resultados evolutivos</div>
+                <div class="agenda-full-sub">Tendencias sep-25 → may-26 · AUM · Transaccionalidad</div>
               </div>
             </div>
-            <div style="font-size:12px;color:var(--text-secondary);padding:8px 12px;background:var(--surface-2);border-radius:var(--radius-sm);border:1px solid var(--border);">El patrón es idéntico en los 2,632 clientes con riesgo activo. <strong>Hay que actuar antes de que lleguen a los 60 días.</strong></div>
-          </div>
-
-          <!-- CAMPAÑAS Y PROYECTOS -->
-          <div class="chart-box" style="padding:20px;">
-            <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brand);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);">Campañas y proyectos estratégicos</div>
-            <div style="display:flex;flex-direction:column;gap:8px;">
-              <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:var(--surface-2);border-radius:var(--radius-sm);border:1px solid var(--border);">
-                <div>
-                  <div style="font-size:13px;font-weight:600;">Rendimientos Dinámicos</div>
-                  <div style="font-size:11px;color:var(--text-tertiary);">Lanzamiento 8 jun · Alonso Cervantes</div>
-                </div>
-                <span class="status-pill s-ok">Por liberar</span>
+            <div class="agenda-full-item">
+              <div class="agenda-full-num">04</div>
+              <div class="agenda-full-body">
+                <div class="agenda-full-title">Campañas</div>
+                <div class="agenda-full-sub">Re-Activa: post-mortem · Próximas campañas jun–jul</div>
               </div>
-              <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:var(--surface-2);border-radius:var(--radius-sm);border:1px solid var(--border);">
-                <div>
-                  <div style="font-size:13px;font-weight:600;">Cashback Liverpool</div>
-                  <div style="font-size:11px;color:var(--text-tertiary);">Lanzamiento 1 jul · Alberto Aguirre</div>
-                </div>
-                <span class="status-pill s-ok">En tiempo</span>
+            </div>
+            <div class="agenda-full-item">
+              <div class="agenda-full-num">05</div>
+              <div class="agenda-full-body">
+                <div class="agenda-full-title">Incidencias / SPINE</div>
+                <div class="agenda-full-sub">4 incidencias · Impacto · Estatus y reactivación</div>
               </div>
-              <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:var(--surface-2);border-radius:var(--radius-sm);border:1px solid var(--border);">
-                <div>
-                  <div style="font-size:13px;font-weight:600;">Asesores en Tienda</div>
-                  <div style="font-size:11px;color:var(--text-tertiary);">Objetivo 15 jun · Rodrigo Guzmán</div>
-                </div>
-                <span class="status-pill s-warn">En riesgo</span>
+            </div>
+            <div class="agenda-full-item">
+              <div class="agenda-full-num">06</div>
+              <div class="agenda-full-body">
+                <div class="agenda-full-title">Proyectos Estratégicos</div>
+                <div class="agenda-full-sub">8 iniciativas · Rendimientos · Cashback · Asesores · TDD</div>
               </div>
-              <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:var(--surface-2);border-radius:var(--radius-sm);border:1px solid var(--border);">
-                <div>
-                  <div style="font-size:13px;font-weight:600;">Entrega TDD en Tienda</div>
-                  <div style="font-size:11px;color:var(--text-tertiary);">Piloto · Abril Quintana</div>
-                </div>
-                <span class="status-pill s-ok">En ejecución</span>
-              </div>
-              <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:rgba(107,112,112,0.05);border-radius:var(--radius-sm);border:1px solid var(--border);">
-                <div>
-                  <div style="font-size:13px;font-weight:600;">Re-Activa — Campaña reactivación</div>
-                  <div style="font-size:11px;color:var(--text-tertiary);">Cerrada · ROI negativo</div>
-                </div>
-                <span class="status-pill s-neg">Concluida</span>
+            </div>
+            <div class="agenda-full-item">
+              <div class="agenda-full-num">07</div>
+              <div class="agenda-full-body">
+                <div class="agenda-full-title">Pendientes SteerCo anterior</div>
+                <div class="agenda-full-sub">3 compromisos · Apertura dual · OTP/SMS · Cuenta Eje vs Fondos</div>
               </div>
             </div>
           </div>
         </div>
 
-      </div><!-- /dtab-overview -->
+      </div><!-- /dtab-agenda -->
+
 
       <!-- ══════════════════════════════════════
            TAB 03: KPIs
@@ -932,7 +891,7 @@ button { cursor: pointer; font-family: inherit; }
             <div class="kpi-val">69%</div>
             <div class="kpi-sub">De los clientes churn de valor M y A — desenganche temprano</div>
           </div>
-          <div class="kpi-card" style="border-top-color:var(--neg);">
+          <div class="kpi-card" style="border-top-color:var(--pos);">
             <div class="kpi-lbl">Clientes con riesgo activo</div>
             <div class="kpi-val">2,632</div>
             <div class="kpi-sub">Aún dentro de la base · Ventana de intervención abierta</div>
@@ -944,8 +903,8 @@ button { cursor: pointer; font-family: inherit; }
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;">
 
           <!-- ALTO VALOR -->
-          <div style="background:var(--black);border-radius:var(--radius);padding:20px;">
-            <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brand);margin-bottom:14px;">Segmento alto valor (&gt;$20k)</div>
+          <div style="background:#0A0E12;border-top:3px solid var(--brand);border-radius:var(--radius);padding:20px;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brand);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.1);">Segmento alto valor (&gt;$20k)</div>
             <div style="display:flex;align-items:flex-end;gap:16px;margin-bottom:16px;">
               <div>
                 <div style="font-size:52px;font-weight:700;color:var(--neg);line-height:1;">420</div>
@@ -966,8 +925,8 @@ button { cursor: pointer; font-family: inherit; }
                 <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:3px;">saldo máximo promedio por cliente perdido</div>
               </div>
             </div>
-            <div style="padding:10px 12px;background:rgba(204,51,51,0.2);border-radius:var(--radius-sm);border-left:3px solid var(--neg);">
-              <div style="font-size:12px;color:rgba(255,255,255,0.9);line-height:1.5;font-weight:600;">Si esta tasa se mantiene, en 3 años no quedaría ningún cliente de alto valor de los actuales.</div>
+            <div style="padding:10px 12px;background:rgba(204,51,51,0.06);border:1px solid rgba(204,51,51,0.18);border-radius:var(--radius-sm);border-left:3px solid var(--neg);">
+              <div style="font-size:12px;color:var(--neg);line-height:1.5;font-weight:600;">Si esta tasa se mantiene, en 3 años no quedaría ningún cliente de alto valor de los actuales.</div>
             </div>
           </div>
 
@@ -977,7 +936,7 @@ button { cursor: pointer; font-family: inherit; }
             <div style="display:flex;align-items:flex-end;gap:16px;margin-bottom:16px;">
               <div>
                 <div style="font-size:52px;font-weight:700;color:var(--neg);line-height:1;">699</div>
-                <div style="font-size:13px;color:var(--text-secondary);margin-top:4px;">clientes perdidos</div>
+                <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:4px;">clientes perdidos</div>
               </div>
               <div style="padding-bottom:10px;">
                 <div style="font-size:28px;font-weight:700;color:var(--neg);">22%</div>
@@ -991,7 +950,7 @@ button { cursor: pointer; font-family: inherit; }
               </div>
               <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px;">
                 <div style="font-size:20px;font-weight:700;color:var(--warn);">$9,710</div>
-                <div style="font-size:11px;color:var(--text-tertiary);margin-top:3px;">saldo máximo promedio por cliente perdido</div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:3px;">saldo máximo promedio por cliente perdido</div>
               </div>
             </div>
             <div style="padding:10px 12px;background:rgba(212,130,10,0.08);border-radius:var(--radius-sm);border-left:3px solid var(--warn);">
@@ -1000,49 +959,6 @@ button { cursor: pointer; font-family: inherit; }
           </div>
         </div>
 
-        <!-- DISTRIBUCIÓN TEMPORAL -->
-        <div class="section-label">Cuándo cayeron — distribución por antigüedad</div>
-        <div style="overflow:hidden;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:20px;">
-          <table class="data-table">
-            <thead><tr>
-              <th style="text-align:left;">Tiempo desde apertura</th>
-              <th style="text-align:right;">Bajo</th>
-              <th style="text-align:right;">Medio</th>
-              <th style="text-align:right;">Alto</th>
-              <th style="text-align:right;">Total</th>
-              <th style="text-align:right;">% del total churn</th>
-            </tr></thead>
-            <tbody>
-              <tr>
-                <td style="font-weight:600;">0–3 meses</td>
-                <td style="text-align:right;">750</td><td style="text-align:right;">104</td><td style="text-align:right;">46</td>
-                <td style="text-align:right;font-weight:600;">900</td><td style="text-align:right;">29%</td>
-              </tr>
-              <tr>
-                <td style="font-weight:600;">3–6 meses</td>
-                <td style="text-align:right;">942</td><td style="text-align:right;">389</td><td style="text-align:right;">234</td>
-                <td style="text-align:right;font-weight:600;">1,565</td>
-                <td style="text-align:right;"><span style="font-weight:700;color:var(--neg);">50%</span></td>
-              </tr>
-              <tr>
-                <td style="font-weight:600;">6–9 meses</td>
-                <td style="text-align:right;">143</td><td style="text-align:right;">83</td><td style="text-align:right;">61</td>
-                <td style="text-align:right;font-weight:600;">287</td><td style="text-align:right;">9%</td>
-              </tr>
-              <tr>
-                <td style="font-weight:600;">&gt;12 meses</td>
-                <td style="text-align:right;">179</td><td style="text-align:right;">123</td><td style="text-align:right;">79</td>
-                <td style="text-align:right;font-weight:600;">381</td><td style="text-align:right;">12%</td>
-              </tr>
-              <tr style="background:rgba(225,0,152,0.04);font-weight:700;">
-                <td>Total</td>
-                <td style="text-align:right;">2,014</td><td style="text-align:right;">699</td><td style="text-align:right;">420</td>
-                <td style="text-align:right;color:var(--neg);">3,133</td>
-                <td style="text-align:right;">100%</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
 
         <!-- INSIGHT CLAVE + ACCIÓN -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
@@ -1062,6 +978,7 @@ button { cursor: pointer; font-family: inherit; }
               <li class="pos"><strong>Cashback Liverpool (jul)</strong> crea un incentivo recurrente de uso — ataca el problema de engagement post-apertura.</li>
               <li class="warn">Implementar alerta temprana de riesgo: identificar clientes que siguen el patrón 0–6 meses antes de que alcancen los 60 días sin saldo.</li>
               <li>Segmentar la comunicación de Rendimientos Dinámicos específicamente hacia los <strong>2,632 en riesgo</strong> y los <strong>420+699 que ya salieron</strong> con saldo histórico conocido.</li>
+              <li class="pos"><strong>Realizar encuesta de salida</strong> a clientes churn para entender la razón de fuga — datos cualitativos para complementar el análisis cuantitativo.</li>
             </ul>
           </div>
         </div>
@@ -1281,27 +1198,8 @@ button { cursor: pointer; font-family: inherit; }
 
         <!-- Estatus actual -->
         <div class="section-label" style="margin-top:20px;">Estatus actual</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
-          <div class="insight-box">
-            <div class="insight-box-header">Proceso de aperturas</div>
-            <ul class="insight-list">
-              <li class="pos">El proceso de aperturas se encuentra estable.</li>
-              <li>El siguiente paso es reactivar los flujos que se encontraban apagados.</li>
-            </ul>
-          </div>
-          <div class="insight-box">
-            <div class="insight-box-header">Flujos a reactivar (MTU) — 6 de junio</div>
-            <ul class="insight-list">
-              <li>MTU</li>
-              <li>Solicitud de TDD</li>
-              <li>Alta de beneficiarios</li>
-              <li>Modificación de correo</li>
-              <li>Upgrade N4</li>
-            </ul>
-          </div>
-        </div>
-        <div style="padding:12px 16px;background:#0A0E12;border-radius:var(--radius);border-left:4px solid var(--brand);">
-          <div style="font-size:var(--text-sm);font-weight:600;color:white;line-height:1.5;">A partir del 6 de junio se reactivarán todos los flujos restantes bajo monitoreo constante.</div>
+        <div style="padding:12px 16px;background:#0A0E12;border-radius:var(--radius);border-left:4px solid var(--brand);margin-bottom:16px;">
+          <div style="font-size:var(--text-sm);font-weight:600;color:white;line-height:1.5;">El proceso de aperturas se encuentra estable. A partir del 6 de junio se reactivarán todos los flujos restantes bajo monitoreo constante.</div>
         </div>
 
       </div><!-- /dtab-incidencias -->
@@ -1314,9 +1212,11 @@ button { cursor: pointer; font-family: inherit; }
         <div class="section-label" style="margin-top:0">4 iniciativas del plan de relanzamiento</div>
 
         <!-- 1 Rendimientos Dinámicos -->
+        
+
         <div class="init-card" id="init-1">
           <div class="init-header" onclick="toggleInit(this)">
-            <div class="init-num">1</div>
+            <div class="init-num" style="background:var(--text-secondary) if i > 4 else 0">1</div>
             <div class="init-name">Rendimientos Dinámicos</div>
             <div class="init-meta">
               <span>Lanzamiento: <strong>8 jun 2026</strong></span>
@@ -1372,10 +1272,9 @@ button { cursor: pointer; font-family: inherit; }
           </div>
         </div>
 
-        <!-- 2 Cashback Liverpool -->
         <div class="init-card" id="init-2">
           <div class="init-header" onclick="toggleInit(this)">
-            <div class="init-num">2</div>
+            <div class="init-num" style="background:var(--text-secondary) if i > 4 else 0">2</div>
             <div class="init-name">Cashback Liverpool</div>
             <div class="init-meta">
               <span>Lanzamiento: <strong>1 jul 2026</strong></span>
@@ -1433,12 +1332,10 @@ button { cursor: pointer; font-family: inherit; }
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- 3 Asesores en Tienda -->
         <div class="init-card" id="init-3">
           <div class="init-header" onclick="toggleInit(this)">
-            <div class="init-num">3</div>
+            <div class="init-num" style="background:var(--text-secondary) if i > 4 else 0">3</div>
             <div class="init-name">Asesores Actinver en Tienda</div>
             <div class="init-meta">
               <span>Lanzamiento: <strong>15 jun 2026</strong></span>
@@ -1486,12 +1383,10 @@ button { cursor: pointer; font-family: inherit; }
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- 4 Entrega TDD en Tienda -->
         <div class="init-card" id="init-4">
           <div class="init-header" onclick="toggleInit(this)">
-            <div class="init-num">4</div>
+            <div class="init-num" style="background:var(--text-secondary) if i > 4 else 0">4</div>
             <div class="init-name">Entrega TDD en Tienda</div>
             <div class="init-meta">
               <span>Responsable: Abril Quintana</span>
@@ -1542,152 +1437,13 @@ button { cursor: pointer; font-family: inherit; }
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- 5. Descuento primer día de compra -->
-        <div class="init-card" id="init-5">
-          <div class="init-header" onclick="toggleInit(this)">
-            <div class="init-num" style="background:var(--text-secondary)">5</div>
-            <div class="init-name">Descuento Primer Día de Compra</div>
-            <div class="init-meta">
-              <span>Desarrollo: 22 semanas</span>
-              <span class="status-pill s-def">On hold</span>
-            </div>
-            <span class="init-chevron">▼</span>
-          </div>
-          <div class="init-body">
-            <div class="init-grid">
-              <div class="init-block">
-                <div class="init-block-label">Descripción</div>
-                <div class="init-block-text">Otorgar beneficio de descuento el primer día de compra con uso de la tarjeta Activa en canal físico y digital.</div>
-                <div class="init-kpis" style="margin-top:10px;">
-                  <span class="init-kpi-tag">Mayor transaccionalidad</span>
-                </div>
-              </div>
-              <div class="init-block">
-                <div class="init-block-label">Hitos relevantes</div>
-                <div class="init-block-text">
-                  <ul>
-                    <li>Desarrollo estimado: 22 semanas</li>
-                    <li>TBC fecha inicio de desarrollo</li>
-                    <li>On hold</li>
-                  </ul>
-                </div>
-                <div class="init-block-label" style="margin-top:12px;">Siguientes pasos</div>
-                <div class="init-block-text">—</div>
-              </div>
-              <div class="init-block" style="background:#F4F4F4;border:1px solid #E0E0E0;">
-                <div class="init-block-label">Riesgos</div>
-                <div class="init-block-text">
-                  <div style="margin-bottom:8px;"><span class="status-pill s-warn">MED</span><br><span style="font-size:var(--text-xs);margin-top:4px;display:block;">Priorización de proyectos por Dirección</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 6. Promociones PMR en POS Liverpool -->
-        <div class="init-card" id="init-6">
-          <div class="init-header" onclick="toggleInit(this)">
-            <div class="init-num" style="background:var(--text-secondary)">6</div>
-            <div class="init-name">Promociones PMR en POS Liverpool</div>
-            <div class="init-meta">
-              <span class="status-pill s-info">En desarrollo</span>
-            </div>
-            <span class="init-chevron">▼</span>
-          </div>
-          <div class="init-body">
-            <div class="init-grid">
-              <div class="init-block">
-                <div class="init-block-label">Descripción</div>
-                <div class="init-block-text">Ampliar la oferta de promociones financieras para Liverpool tanto POS físico como virtual, otorgando un beneficio especial a un tipo de tarjeta(s) por BIN o grupo de BINES específicos para un banco para productos de débito. El beneficio puede ser un descuento directo con porcentaje variable por el medio de pago.</div>
-                <div class="init-kpis" style="margin-top:10px;">
-                  <span class="init-kpi-tag">Mayor transaccionalidad</span>
-                </div>
-              </div>
-              <div class="init-block">
-                <div class="init-block-label">Hitos relevantes</div>
-                <div class="init-block-text">
-                  <ul>
-                    <li>Desarrollo por configuración bin Activa</li>
-                    <li>Convivencia con iniciativas de: Promociones Diferenciadas · Promociones x Bin · Filtro de Devoluciones</li>
-                  </ul>
-                </div>
-                <div class="init-block-label" style="margin-top:12px;">Siguientes pasos</div>
-                <div class="init-block-text">
-                  <ul>
-                    <li>Ejecución de pruebas del módulo de promociones</li>
-                    <li>Pruebas de no afectación versión POS físico y digital</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="init-block" style="background:#F4F4F4;border:1px solid #E0E0E0;">
-                <div class="init-block-label">Riesgos</div>
-                <div class="init-block-text">
-                  <div style="margin-bottom:8px;"><span class="status-pill s-warn">MED</span><br><span style="font-size:var(--text-xs);margin-top:4px;display:block;">Negociación conforme tarjetas de crédito — confirmar con Gestión de Portafolio</span></div>
-                  <div><span class="status-pill s-warn">MED</span><br><span style="font-size:var(--text-xs);margin-top:4px;display:block;">Dependencia de liberación de proyectos alternos</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 7. Apertura dual - Tarjeta crédito vs Activa -->
         <div class="init-card" id="init-7">
           <div class="init-header" onclick="toggleInit(this)">
-            <div class="init-num" style="background:var(--text-secondary)">7</div>
-            <div class="init-name">Apertura Dual — Tarjeta Crédito vs Activa</div>
-            <div class="init-meta">
-              <span class="status-pill s-info">En análisis</span>
-            </div>
-            <span class="init-chevron">▼</span>
-          </div>
-          <div class="init-body">
-            <div class="init-grid">
-              <div class="init-block">
-                <div class="init-block-label">Descripción</div>
-                <div class="init-block-text">Ofrecer al cliente con solicitud aprobada de tarjeta de crédito Liverpool, el producto de ahorro e inversión Activa, considerando los datos personales y documentos proporcionados en su trámite anterior, logrando una experiencia positiva.</div>
-                <div class="init-kpis" style="margin-top:10px;">
-                  <span class="init-kpi-tag">Mejor experiencia onboarding</span>
-                  <span class="init-kpi-tag">Clientes nuevos</span>
-                </div>
-              </div>
-              <div class="init-block">
-                <div class="init-block-label">Hitos relevantes</div>
-                <div class="init-block-text">
-                  <ul>
-                    <li>Login en Liverpool Pocket</li>
-                    <li>Login en portal Actinver</li>
-                    <li>Optimización de pantallas</li>
-                    <li>Reducción de tiempo en proceso onboarding</li>
-                  </ul>
-                </div>
-                <div class="init-block-label" style="margin-top:12px;">Siguientes pasos</div>
-                <div class="init-block-text">
-                  <ul>
-                    <li>Confirmar opción de validación de biométricos</li>
-                    <li>Validar con equipos normativos los datos / campos para prellenado</li>
-                    <li>En análisis: solución técnica para envío y recepción de datos (APIs)</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="init-block" style="background:#F4F4F4;border:1px solid #E0E0E0;">
-                <div class="init-block-label">Riesgos</div>
-                <div class="init-block-text">
-                  <div style="margin-bottom:8px;"><span class="status-pill s-warn">MED</span><br><span style="font-size:var(--text-xs);margin-top:4px;display:block;">Negociación conforme tarjetas de crédito — confirmar con Gestión de Portafolio</span></div>
-                  <div><span class="status-pill s-warn">MED</span><br><span style="font-size:var(--text-xs);margin-top:4px;display:block;">Dependencia de liberación de proyectos alternos</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 8. Cajeros Banamex -->
-        <div class="init-card" id="init-8">
-          <div class="init-header" onclick="toggleInit(this)">
-            <div class="init-num" style="background:var(--text-secondary)">8</div>
+            <div class="init-num" style="background:var(--text-secondary) if i > 4 else 0">5</div>
             <div class="init-name">Cajeros Banamex</div>
             <div class="init-meta">
+              <span>Responsable: Beatriz Mejía</span>
               <span>Fin instalación: julio 2026</span>
               <span class="status-pill s-info">En gestión</span>
             </div>
@@ -1730,7 +1486,149 @@ button { cursor: pointer; font-family: inherit; }
               </div>
             </div>
           </div>
-        </div>
+
+        <div class="init-card" id="init-8">
+          <div class="init-header" onclick="toggleInit(this)">
+            <div class="init-num" style="background:var(--text-secondary) if i > 4 else 0">6</div>
+            <div class="init-name">Corresponsalía</div>
+            <div class="init-meta">
+              <span>Responsable: Beatriz Mejía</span>
+              <span class="status-pill s-info">En análisis</span>
+            </div>
+            <span class="init-chevron">▼</span>
+          </div>
+          <div class="init-body">
+            <div class="init-grid">
+              <div class="init-block">
+                <div class="init-block-label">Descripción</div>
+                <div class="init-block-text">Ofrecer al cliente con solicitud aprobada de tarjeta de crédito Liverpool, el producto de ahorro e inversión Activa, considerando los datos personales y documentos proporcionados en su trámite anterior, logrando una experiencia positiva.</div>
+                <div class="init-kpis" style="margin-top:10px;">
+                  <span class="init-kpi-tag">Mejor experiencia onboarding</span>
+                  <span class="init-kpi-tag">Clientes nuevos</span>
+                </div>
+              </div>
+              <div class="init-block">
+                <div class="init-block-label">Hitos relevantes</div>
+                <div class="init-block-text">
+                  <ul>
+                    <li>Login en Liverpool Pocket</li>
+                    <li>Login en portal Actinver</li>
+                    <li>Optimización de pantallas</li>
+                    <li>Reducción de tiempo en proceso onboarding</li>
+                  </ul>
+                </div>
+                <div class="init-block-label" style="margin-top:12px;">Siguientes pasos</div>
+                <div class="init-block-text">
+                  <ul>
+                    <li>Confirmar opción de validación de biométricos</li>
+                    <li>Validar con equipos normativos los datos / campos para prellenado</li>
+                    <li>En análisis: solución técnica para envío y recepción de datos (APIs)</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="init-block" style="background:#F4F4F4;border:1px solid #E0E0E0;">
+                <div class="init-block-label">Riesgos</div>
+                <div class="init-block-text">
+                  <div style="margin-bottom:8px;"><span class="status-pill s-warn">MED</span><br><span style="font-size:var(--text-xs);margin-top:4px;display:block;">Negociación conforme tarjetas de crédito — confirmar con Gestión de Portafolio</span></div>
+                  <div><span class="status-pill s-warn">MED</span><br><span style="font-size:var(--text-xs);margin-top:4px;display:block;">Dependencia de liberación de proyectos alternos</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <div class="init-card" id="init-5">
+          <div class="init-header" onclick="toggleInit(this)">
+            <div class="init-num" style="background:var(--text-secondary) if i > 4 else 0">7</div>
+            <div class="init-name">Promociones PMR en POS Liverpool</div>
+            <div class="init-meta">
+              <span>Responsable: Beatriz Mejía</span>
+              <span class="status-pill s-info">En desarrollo</span>
+            </div>
+            <span class="init-chevron">▼</span>
+          </div>
+          <div class="init-body">
+            <div class="init-grid">
+              <div class="init-block">
+                <div class="init-block-label">Descripción</div>
+                <div class="init-block-text">Ampliar la oferta de promociones financieras para Liverpool tanto POS físico como virtual, otorgando un beneficio especial a un tipo de tarjeta(s) por BIN o grupo de BINES específicos para un banco para productos de débito. El beneficio puede ser un descuento directo con porcentaje variable por el medio de pago.</div>
+                <div class="init-kpis" style="margin-top:10px;">
+                  <span class="init-kpi-tag">Mayor transaccionalidad</span>
+                </div>
+              </div>
+              <div class="init-block">
+                <div class="init-block-label">Hitos relevantes</div>
+                <div class="init-block-text">
+                  <ul>
+                    <li>Desarrollo por configuración bin Activa</li>
+                    <li>Convivencia con iniciativas de: Promociones Diferenciadas · Promociones x Bin · Filtro de Devoluciones</li>
+                  </ul>
+                </div>
+                <div class="init-block-label" style="margin-top:12px;">Siguientes pasos</div>
+                <div class="init-block-text">
+                  <ul>
+                    <li>Ejecución de pruebas del módulo de promociones</li>
+                    <li>Pruebas de no afectación versión POS físico y digital</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="init-block" style="background:#F4F4F4;border:1px solid #E0E0E0;">
+                <div class="init-block-label">Riesgos</div>
+                <div class="init-block-text">
+                  <div style="margin-bottom:8px;"><span class="status-pill s-warn">MED</span><br><span style="font-size:var(--text-xs);margin-top:4px;display:block;">Negociación conforme tarjetas de crédito — confirmar con Gestión de Portafolio</span></div>
+                  <div><span class="status-pill s-warn">MED</span><br><span style="font-size:var(--text-xs);margin-top:4px;display:block;">Dependencia de liberación de proyectos alternos</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <div class="init-card" id="init-6">
+          <div class="init-header" onclick="toggleInit(this)">
+            <div class="init-num" style="background:var(--text-secondary) if i > 4 else 0">8</div>
+            <div class="init-name">Apertura Dual — Tarjeta Crédito vs Activa</div>
+            <div class="init-meta">
+              <span>Responsable: Beatriz Mejía</span>
+              <span class="status-pill s-info">En análisis</span>
+            </div>
+            <span class="init-chevron">▼</span>
+          </div>
+          <div class="init-body">
+            <div class="init-grid">
+              <div class="init-block">
+                <div class="init-block-label">Descripción</div>
+                <div class="init-block-text">Ofrecer al cliente con solicitud aprobada de tarjeta de crédito Liverpool, el producto de ahorro e inversión Activa, considerando los datos personales y documentos proporcionados en su trámite anterior, logrando una experiencia positiva.</div>
+                <div class="init-kpis" style="margin-top:10px;">
+                  <span class="init-kpi-tag">Mejor experiencia onboarding</span>
+                  <span class="init-kpi-tag">Clientes nuevos</span>
+                </div>
+              </div>
+              <div class="init-block">
+                <div class="init-block-label">Hitos relevantes</div>
+                <div class="init-block-text">
+                  <ul>
+                    <li>Login en Liverpool Pocket</li>
+                    <li>Login en portal Actinver</li>
+                    <li>Optimización de pantallas</li>
+                    <li>Reducción de tiempo en proceso onboarding</li>
+                  </ul>
+                </div>
+                <div class="init-block-label" style="margin-top:12px;">Siguientes pasos</div>
+                <div class="init-block-text">
+                  <ul>
+                    <li>Confirmar opción de validación de biométricos</li>
+                    <li>Validar con equipos normativos los datos / campos para prellenado</li>
+                    <li>En análisis: solución técnica para envío y recepción de datos (APIs)</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="init-block" style="background:#F4F4F4;border:1px solid #E0E0E0;">
+                <div class="init-block-label">Riesgos</div>
+                <div class="init-block-text">
+                  <div style="margin-bottom:8px;"><span class="status-pill s-warn">MED</span><br><span style="font-size:var(--text-xs);margin-top:4px;display:block;">Negociación conforme tarjetas de crédito — confirmar con Gestión de Portafolio</span></div>
+                  <div><span class="status-pill s-warn">MED</span><br><span style="font-size:var(--text-xs);margin-top:4px;display:block;">Dependencia de liberación de proyectos alternos</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
 
       </div><!-- /dtab-proyectos -->
 
@@ -2244,7 +2142,7 @@ function updateCharts(){
 }
 
 // @keyframes spin ya está en el CSS principal
-window.addEventListener('load',()=>{ setTimeout(initSegChart,100); document.getElementById('dtab-resumen').classList.remove('active'); document.getElementById('dtab-overview').classList.add('active'); });
+window.addEventListener('load',()=>{ setTimeout(initSegChart,100); document.getElementById('dtab-resumen').classList.remove('active'); document.getElementById('dtab-agenda').classList.add('active'); });
 </script>
 </body>
 </html>
