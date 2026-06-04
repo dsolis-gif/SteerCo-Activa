@@ -293,15 +293,119 @@ button { cursor: pointer; font-family: inherit; }
 .da-title { font-size: var(--text-md); font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
 .da-desc { font-size: var(--text-sm); color: var(--text-tertiary); max-width: 400px; line-height: 1.6; }
 
+/* ─── TABLET (≤900px) ────────────────────────────── */
 @media (max-width: 900px) {
-  .sidebar { width: 60px; }
-  .logo-name, .logo-sub, .logo-badge, .user-name, .dm-toggle span:last-child, .nav-item span:not(.nav-icon) { display: none; }
-  .content { padding: 16px; }
-  .hero-row { grid-template-columns: 1fr; }
-  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .sidebar { width: 64px; }
+  .logo-name, .logo-sub, .logo-badge, .user-name,
+  .dm-toggle span:last-child, .nav-item span:not(.nav-icon) { display: none; }
+  .nav-item { justify-content: center; padding: 12px 0; }
+  .nav-icon { width: 100%; text-align: center; }
+  .content { padding: 16px 14px; }
+  .topbar-title { font-size: 13px; }
+  .hero-row { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .hero-kpi-stack { display: contents; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .kpi-grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
   .init-grid { grid-template-columns: 1fr; }
   .campaign-grid { grid-template-columns: 1fr; }
-  .spine-impact { grid-template-columns: 1fr; }
+  .spine-impact { grid-template-columns: repeat(3,1fr); }
+  .chart-row { grid-template-columns: 1fr; }
+  .chart-row-half { grid-template-columns: 1fr; }
+  .res-lens span { display: none; }
+  .res-lens { padding: 7px 9px; }
+  .camp-row { grid-template-columns: 70px 1fr; gap: 8px; }
+  .camp-row-kpi { display: none; }
+  .decision-options { grid-template-columns: 1fr; }
+  .alert-strip { flex-direction: column; gap: 8px; }
+  .alert-strip-label { min-width: unset; }
+  .exec-summary-text { font-size: 13px; }
+}
+
+/* ─── MÓVIL (≤600px) ─────────────────────────────── */
+@media (max-width: 600px) {
+  /* Sidebar oculto, topbar con toggle */
+  .app { flex-direction: column; height: auto; min-height: 100vh; }
+  .sidebar { display: none; width: 100%; }
+  .sidebar.mobile-open {
+    display: flex; position: fixed; top: 0; left: 0; height: 100vh;
+    width: 220px; z-index: 1000; box-shadow: 4px 0 20px rgba(0,0,0,0.4);
+  }
+  .sidebar-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5); z-index: 999;
+  }
+  .sidebar-overlay.active { display: block; }
+  .main { width: 100%; }
+  .topbar { padding: 0 14px; height: 50px; }
+  .topbar-meta { display: none !important; }
+  .topbar-toggle { display: flex !important; }
+  .topbar-title { font-size: 13px; }
+  .content { padding: 12px; overflow-y: auto; }
+
+  /* Tabs: scroll horizontal, texto más corto */
+  .dash-tabs { gap: 0; padding-bottom: 1px; }
+  .dash-tab { padding: 8px 10px; font-size: 9px; letter-spacing: 0.05em; }
+
+  /* KPIs: 1 columna en móvil muy pequeño, 2 en normal */
+  .hero-row { grid-template-columns: 1fr; gap: 8px; }
+  .hero-card { padding: 16px; }
+  .hero-number { font-size: 36px; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px; }
+  .kpi-grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
+  .kpi-val { font-size: 24px; }
+
+  /* Resumen ejecutivo */
+  .exec-summary-bar { padding: 12px 14px; }
+  .exec-summary-text { font-size: 12px; }
+
+  /* Segmentos: tabla con scroll */
+  .chart-row, .chart-row-half { grid-template-columns: 1fr; gap: 8px; }
+  .seg-table { font-size: 11px; }
+  .seg-table th, .seg-table td { padding: 6px 8px; }
+
+  /* Highlights */
+  .alert-strip { flex-direction: column; gap: 6px; padding: 10px 12px; }
+  .alert-item { font-size: 11px; }
+
+  /* Iniciativas */
+  .init-grid { grid-template-columns: 1fr; gap: 8px; }
+  .init-header { flex-wrap: wrap; gap: 6px; padding: 12px 14px; }
+  .init-meta { flex-wrap: wrap; gap: 6px; font-size: 10px; }
+  .init-body { padding: 0 14px 16px; }
+
+  /* Campañas */
+  .campaign-grid { grid-template-columns: 1fr; }
+  .camp-row { grid-template-columns: 1fr; gap: 4px; padding: 10px 12px; }
+  .camp-row-period { font-size: 11px; }
+  .camp-row-kpi { display: none; }
+
+  /* SPINE */
+  .spine-impact { grid-template-columns: 1fr !important; gap: 8px; }
+  .spine-kpi-val { font-size: 28px; }
+
+  /* Resultados lentes */
+  .res-lens { padding: 6px 8px; }
+  .res-lens svg { width: 11px; height: 11px; }
+  #res-charts-area { grid-template-columns: 1fr !important; }
+  #res-kpi-row { grid-template-columns: repeat(2,1fr) !important; }
+
+  /* Decisiones */
+  .decision-options { grid-template-columns: 1fr; gap: 8px; }
+  .decision-header { flex-direction: column; gap: 8px; }
+  .pendiente-card { flex-direction: column; }
+
+  /* Tabla detalle scroll */
+  #det-table { font-size: 10px; }
+  .det-group-btn { font-size: 9px; padding: 4px 7px; }
+}
+
+/* ─── MÓVIL PEQUEÑO (≤380px) ─────────────────────── */
+@media (max-width: 380px) {
+  .kpi-grid { grid-template-columns: 1fr !important; }
+  .kpi-grid-3 { grid-template-columns: 1fr !important; }
+  .dash-tab { padding: 7px 8px; font-size: 8px; }
+  .hero-number { font-size: 30px; }
+  .kpi-val { font-size: 22px; }
 }
 
 /* ── RES LENTES ── */
@@ -404,9 +508,14 @@ button { cursor: pointer; font-family: inherit; }
   <!-- MAIN -->
   <div class="main">
     <div class="topbar">
-      <div>
-        <span class="topbar-title">Activa by Liverpool — SteerCo</span>
-        <span class="topbar-meta" style="display:block;margin-top:1px;">Junio 5, 2026  ·  Actinver × Liverpool</span>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button class="topbar-toggle" onclick="toggleSidebar()" style="display:none;background:none;border:none;cursor:pointer;padding:4px;color:var(--text-primary);" aria-label="Menú">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div>
+          <span class="topbar-title">Activa by Liverpool — SteerCo</span>
+          <span class="topbar-meta" style="display:block;margin-top:1px;">Junio 5, 2026 · Actinver × Liverpool</span>
+        </div>
       </div>
       <div class="topbar-actions">
         <button class="btn btn-primary" onclick="exportPDF()">
@@ -881,7 +990,7 @@ button { cursor: pointer; font-family: inherit; }
             <div class="init-name">Rendimientos Dinámicos</div>
             <div class="init-meta">
               <span>Lanzamiento: <strong>8 jun 2026</strong></span>
-              <span>Responsable: Israel Martínez</span>
+              <span>Responsable: Alonso Cervantes</span>
               <span class="status-pill s-warn">🟡 Por liberar</span>
             </div>
             <span class="init-chevron">▼</span>
@@ -1114,6 +1223,14 @@ button { cursor: pointer; font-family: inherit; }
 </div><!-- /app -->
 
 <script>
+// ── SIDEBAR MÓVIL ──
+function toggleSidebar() {
+  const sb = document.querySelector('.sidebar');
+  const ov = document.getElementById('sidebar-overlay');
+  sb.classList.toggle('mobile-open');
+  ov.classList.toggle('active');
+}
+
 // ── DARK MODE ──
 function toggleDM() {
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
