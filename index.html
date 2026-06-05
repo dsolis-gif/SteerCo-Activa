@@ -490,54 +490,90 @@ button { cursor: pointer; font-family: inherit; }
 
 /* ── @MEDIA PRINT — PDF ejecutivo ── */
 @media print {
+  /* ── Colores y base ─────────────────────────────────── */
   * { -webkit-print-color-adjust: exact !important; color-adjust: exact !important; print-color-adjust: exact !important; }
-  @page { size: letter landscape; margin: 12mm 14mm; }
+  html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  /* Force background colors to print */
+  .kpi-card, .res-kpi-card, .chart-box, .insight-box, .camp-header, .exec-summary-box,
+  [style*="background"], [class*="s-pos"], [class*="s-neg"], [class*="s-warn"], [class*="s-def"],
+  [class*="s-info"], .status-pill, .init-num, .seg-row { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  @page { size: letter landscape; margin: 14mm 16mm; }
 
-  /* Ocultar elementos de navegación */
-  .sidebar, .topbar, .dash-tabs, .topbar-actions { display: none !important; }
-
-  /* Full width sin sidebar */
-  .app { display: block !important; height: auto !important; }
-  .main { display: block !important; }
-  .content { padding: 0 !important; overflow: visible !important; height: auto !important; }
-
-  /* Mostrar TODAS las pestañas una tras otra en el PDF */
-  .dash-panel { display: block !important; page-break-inside: avoid; margin-bottom: 24px; }
-
-  /* Section break entre pestañas */
-  .dash-panel + .dash-panel { page-break-before: always; padding-top: 8px; }
-
-  /* Ocultar elementos interactivos */
+  /* ── Layout: ocultar nav, sidebar, controles ────────── */
+  .sidebar, .topbar, .dash-tabs, .topbar-actions,
   .btn, button[onclick*="setLens"], .res-lens, button[onclick*="exportPDF"],
   #res-chart-toggle, #det-group-btns, #res-insights-panel .btn-generar,
   button[onclick*="generateInsights"], label[onmouseover], .init-chevron,
   button[onclick*="exportDetalleTSV"] { display: none !important; }
 
-  /* Abrir todas las iniciativas */
+  /* ── Contenedor principal full-width ────────────────── */
+  html, body { width: 100%; height: auto; overflow: visible; }
+  .app { display: block !important; width: 100% !important; height: auto !important; overflow: visible !important; }
+  .main { display: block !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
+  .content { padding: 0 !important; overflow: visible !important; height: auto !important; width: 100% !important; }
+
+  /* ── PESTAÑAS: cada una empieza en página nueva ─────── */
+  /* Primera pestaña no necesita salto antes */
+  .dash-panel { display: block !important; width: 100% !important; overflow: visible !important;
+                break-before: page; page-break-before: always; margin: 0 !important; padding: 16px 0 0 0 !important; }
+  .dash-panel:first-of-type { break-before: avoid; page-break-before: avoid; }
+
+  /* El contenido DENTRO de cada pestaña puede fluir libremente entre páginas */
+  /* Solo evitar cortes en elementos pequeños */
+  .kpi-card, .res-kpi-card, .section-label,
+  .insight-box, .camp-header { break-inside: avoid; page-break-inside: avoid; }
+
+  /* ── Abrir todos los accordions de iniciativas ──────── */
   .init-body { display: block !important; }
 
-  /* Forzar fondo blanco en kpi cards */
-  .kpi-card, .res-kpi-card, .chart-box, .insight-box { box-shadow: none !important; }
+  /* ── Título de pestaña como encabezado visible ──────── */
+  .dash-panel::before {
+    content: attr(data-title);
+    display: block;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #E10098;
+    margin-bottom: 14px;
+    padding-bottom: 7px;
+    border-bottom: 2px solid #0D0D0D;
+  }
 
-  /* Header de sección visible en cada página */
-  .section-label { font-size: 9px !important; }
-
-  /* Grids que rompen feo en print */
+  /* ── Grids adaptados a landscape ───────────────────── */
   .hero-row { display: grid !important; grid-template-columns: 1.2fr 1fr 1fr !important; gap: 8px !important; }
   .kpi-grid { grid-template-columns: repeat(4,1fr) !important; }
   .init-grid { grid-template-columns: 1fr 1fr 1fr !important; }
   .spine-impact { grid-template-columns: repeat(3,1fr) !important; }
 
-  /* Tamaño de fuente más pequeño para tablas */
+  /* ── Tipografía y tablas ─────────────────────────────── */
   .data-table, .seg-table { font-size: 9px !important; }
-  .data-table td, .data-table th, .seg-table td, .seg-table th { padding: 5px 7px !important; }
+  .data-table td, .data-table th, .seg-table td, .seg-table th { padding: 4px 6px !important; }
+  .section-label { font-size: 9px !important; }
 
-  /* Titulo de pestaña visible */
-  .dash-panel::before { content: attr(data-title); display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #E10098; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 2px solid #0D0D0D; }
+  /* ── Sombras innecesarias ────────────────────────────── */
+  .kpi-card, .res-kpi-card, .chart-box, .insight-box { box-shadow: none !important; }
+
+  /* ── Campañas: cada una en página nueva, sin imágenes ── */
+  .camp-card { break-before: page !important; page-break-before: always !important; }
+  .camp-img-col, .camp-img { display: none !important; }
+  /* Layout de una columna cuando se oculta la imagen */
+  .camp-layout { grid-template-columns: 1fr !important; }
+  .camp-section-grid { grid-template-columns: 1fr 1fr !important; }
+  .camp-kpis-row { flex-wrap: wrap !important; gap: 8px !important; }
+  .camp-kpi { min-width: 120px !important; flex: 1 !important; }
+
+  /* ── Gráficas de resultados: no cortar ───────────────── */
+  #res-charts-area { display: block !important; }
+  #res-charts-area .chart-box { break-inside: avoid !important; page-break-inside: avoid !important; margin-bottom: 16px !important; }
+  #res-charts-area .chart-box canvas { max-height: 180px !important; }
+
+  /* ── Iniciativas: cada una en página nueva ───────────── */
+  #dtab-proyectos .init-card { break-before: page !important; page-break-before: always !important; break-inside: avoid !important; }
 }
 </style>
 </head>
-<body>
+<body style="-webkit-print-color-adjust:exact;print-color-adjust:exact;">
 <div class="app">
 
   <!-- SIDEBAR -->
@@ -852,17 +888,7 @@ button { cursor: pointer; font-family: inherit; }
         </div>
 
         <!-- Panel de insights -->
-        <div id="res-insights-panel" style="border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);overflow:hidden;margin-bottom:20px;">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border);">
-            <div style="display:flex;align-items:center;gap:8px;">
-              <span style="font-size:var(--text-xs);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-primary);">Principales insights</span>
-              <span id="res-lens-badge" style="font-size:var(--text-xs);font-weight:600;padding:2px 7px;border-radius:20px;background:rgba(225,0,152,0.1);color:var(--brand);letter-spacing:0.06em;text-transform:uppercase;"></span>
-            </div>
-          </div>
-          <div id="res-insights-body" style="padding:16px 18px;">
-            <div style="font-size:var(--text-sm);color:var(--text-tertiary);font-style:italic;">Haz clic en "Generar" para analizar los datos del lente activo.</div>
-          </div>
-        </div>
+
 
         <!-- Detalle completo (tabla) -->
         <div id="res-detalle-panel" style="display:none;">
@@ -979,15 +1005,6 @@ button { cursor: pointer; font-family: inherit; }
 
         <!-- INSIGHT CLAVE + ACCIÓN -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-          <div class="insight-box">
-            <div class="insight-box-header">Patrón de fuga — lo que nos dice el análisis</div>
-            <ul class="insight-list">
-              <li class="neg"><strong>79% de los clientes de valor M y A</strong> cayeron en los primeros 6 meses. La ventana crítica de intervención es temprana.</li>
-              <li class="neg">El segmento de valor medio tiene una tasa de fuga anualizada del <strong>53%</strong> — aún más urgente que el alto valor.</li>
-              <li class="warn">El comportamiento de los <strong>2,632 clientes con riesgo de churn activo</strong> es idéntico al patrón de los que ya salieron. Son los próximos si no actuamos.</li>
-              <li>El churn no es aleatorio: ocurre mayoritariamente en la primera mitad del año de vida del cliente. Es un problema de activación y engagement temprano, no de insatisfacción posterior.</li>
-            </ul>
-          </div>
           <div class="insight-box" style="border-left:4px solid var(--brand);">
             <div class="insight-box-header">Qué debemos hacer — acciones concretas</div>
             <ul class="insight-list">
@@ -2539,17 +2556,25 @@ function initSegChart(){
 
 // ── PDF EXPORT ──
 function exportPDF(){
-  // Forzar tema claro para impresión
+  // 1. Forzar tema claro
   const wasDark = document.documentElement.getAttribute('data-theme')==='dark';
   if(wasDark) document.documentElement.setAttribute('data-theme','');
+
+  // 2. Mostrar TODAS las pestañas (CSS print las fuerza, pero por si acaso)
+  const panels = document.querySelectorAll('.dash-panel');
+  const prevDisplay = [];
+  panels.forEach((p,i)=>{ prevDisplay[i]=p.style.display; p.style.display='block'; });
+
   document.body.classList.add('printing');
   setTimeout(()=>{
     window.print();
     setTimeout(()=>{
+      // Restaurar estado original
+      panels.forEach((p,i)=>{ p.style.display=prevDisplay[i]; });
       document.body.classList.remove('printing');
       if(wasDark) document.documentElement.setAttribute('data-theme','dark');
-    },500);
-  },150);
+    },600);
+  },200);
 }
 
 // ── DARK MODE UPDATE ──
