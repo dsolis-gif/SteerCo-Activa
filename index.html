@@ -587,14 +587,13 @@ button { cursor: pointer; font-family: inherit; }
 
     <div class="content">
       <div class="dash-tabs">
-        <div class="dash-tab"          onclick="showTab('agenda',this)">01 · Agenda</div>
-        <div class="dash-tab"          onclick="showTab('resumen',this)">02 · KPIs</div>
-        <div class="dash-tab"          onclick="showTab('churn',this)">03 · Análisis Churn</div>
-        <div class="dash-tab"          onclick="showTab('resultados',this)">04 · Resultados</div>
-        <div class="dash-tab"          onclick="showTab('campanas',this)">05 · Campañas</div>
-        <div class="dash-tab"          onclick="showTab('incidencias',this)">06 · Incidencias / SPINE</div>
-        <div class="dash-tab"          onclick="showTab('proyectos',this)">07 · Proyectos Estratégicos</div>
-        <div class="dash-tab active"   onclick="showTab('pendientes',this)">08 · Pendientes último SteerCo</div>
+        <div class="dash-tab"          onclick="showTab('agenda',this)">Agenda</div>
+        <div class="dash-tab"          onclick="showTab('resumen',this)">01 · KPIs</div>
+        <div class="dash-tab"          onclick="showTab('churn',this)">02 · Análisis Churn</div>
+        <div class="dash-tab"          onclick="showTab('resultados',this)">03 · Resultados</div>
+        <div class="dash-tab"          onclick="showTab('campanas',this)">04 · Campañas</div>
+        <div class="dash-tab"          onclick="showTab('incidencias',this)">05 · Incidencias / SPINE</div>
+        <div class="dash-tab"          onclick="showTab('proyectos',this)">06 · Proyectos Estratégicos</div>
       </div>
 
       <!-- ══════════════════════════════════════
@@ -650,13 +649,7 @@ button { cursor: pointer; font-family: inherit; }
                 <div class="agenda-full-sub">8 iniciativas · Rendimientos · Cashback · Asesores · TDD</div>
               </div>
             </div>
-            <div class="agenda-full-item">
-              <div class="agenda-full-num">07</div>
-              <div class="agenda-full-body">
-                <div class="agenda-full-title">Pendientes último SteerCo</div>
-                <div class="agenda-full-sub">3 compromisos · Apertura dual · OTP/SMS · Cuenta Eje vs Fondos</div>
-              </div>
-            </div>
+
           </div>
         </div>
 
@@ -1502,14 +1495,14 @@ button { cursor: pointer; font-family: inherit; }
       ══════════════════════════════════════ -->
       <div class="dash-panel" id="dtab-proyectos" data-title="05 · Proyectos Estratégicos">
 
-        <div class="section-label" style="margin-top:0">4 iniciativas del plan de relanzamiento</div>
+        <div class="section-label" style="margin-top:0">10 iniciativas del plan de relanzamiento</div>
 
         <!-- 1 Rendimientos Dinámicos -->
         
 
         <div class="init-card" id="init-1">
           <div class="init-header" onclick="toggleInit(this)">
-            <div class="init-num" style="background:var(--text-secondary) if i > 4 else 0">1</div>
+            <div class="init-num" style="background:var(--brand)">1</div>
             <div class="init-name">Rendimientos Dinámicos</div>
             <div class="init-meta">
               <span>Lanzamiento: <strong>8 jun 2026</strong></span>
@@ -1574,7 +1567,7 @@ button { cursor: pointer; font-family: inherit; }
 
         <div class="init-card" id="init-2">
           <div class="init-header" onclick="toggleInit(this)">
-            <div class="init-num" style="background:var(--text-secondary) if i > 4 else 0">2</div>
+            <div class="init-num" style="background:var(--brand)">2</div>
             <div class="init-name">Cashback Liverpool</div>
             <div class="init-meta">
               <span>Lanzamiento: <strong>15 jun 2026</strong></span>
@@ -1635,7 +1628,7 @@ button { cursor: pointer; font-family: inherit; }
 
         <div class="init-card" id="init-3">
           <div class="init-header" onclick="toggleInit(this)">
-            <div class="init-num" style="background:var(--text-secondary) if i > 4 else 0">3</div>
+            <div class="init-num" style="background:var(--brand)">3</div>
             <div class="init-name">Asesores Actinver en Tienda</div>
             <div class="init-meta">
               <span>Lanzamiento: <strong>15 jun 2026</strong></span>
@@ -1686,7 +1679,7 @@ button { cursor: pointer; font-family: inherit; }
 
         <div class="init-card" id="init-4">
           <div class="init-header" onclick="toggleInit(this)">
-            <div class="init-num" style="background:var(--text-secondary) if i > 4 else 0">4</div>
+            <div class="init-num" style="background:var(--brand)">4</div>
             <div class="init-name">Entrega TDD en Tienda</div>
             <div class="init-meta">
               <span>Responsable: Abril Quintana</span>
@@ -1740,7 +1733,7 @@ button { cursor: pointer; font-family: inherit; }
 
         <div class="init-card" id="init-7">
           <div class="init-header" onclick="toggleInit(this)">
-            <div class="init-num" style="background:var(--text-secondary) if i > 4 else 0">5</div>
+            <div class="init-num" style="background:var(--brand)">5</div>
             <div class="init-name">Cajeros Banamex</div>
             <div class="init-meta">
               <span>Responsable: Beatriz Mejía</span>
@@ -1788,7 +1781,7 @@ button { cursor: pointer; font-family: inherit; }
 
         <div class="init-card" id="init-8">
           <div class="init-header" onclick="toggleInit(this)">
-            <div class="init-num" style="background:var(--text-secondary) if i > 4 else 0">6</div>
+            <div class="init-num" style="background:var(--brand)">6</div>
             <div class="init-name">Corresponsalía</div>
             <div class="init-meta">
               <span>Responsable: Beatriz Mejía</span>
@@ -1817,7 +1810,7 @@ button { cursor: pointer; font-family: inherit; }
 
         <div class="init-card" id="init-5">
           <div class="init-header" onclick="toggleInit(this)">
-            <div class="init-num" style="background:var(--text-secondary) if i > 4 else 0">7</div>
+            <div class="init-num" style="background:var(--brand)">7</div>
             <div class="init-name">Promociones PMR en POS Liverpool</div>
             <div class="init-meta">
               <span>Responsable: Beatriz Mejía</span>
@@ -1862,11 +1855,12 @@ button { cursor: pointer; font-family: inherit; }
 
         <div class="init-card" id="init-6">
           <div class="init-header" onclick="toggleInit(this)">
-            <div class="init-num" style="background:var(--text-secondary) if i > 4 else 0">8</div>
+            <div class="init-num" style="background:var(--brand)">8</div>
             <div class="init-name">Apertura Dual — Tarjeta Crédito vs Activa</div>
             <div class="init-meta">
               <span>Responsable: Beatriz Mejía</span>
               <span class="status-pill s-info">En análisis</span>
+              <span class="status-pill" style="background:rgba(225,0,152,0.12);color:var(--brand);border:1px solid rgba(225,0,152,0.3);">&#128204; Pendiente último SteerCo</span>
             </div>
             <span class="init-chevron">▼</span>
           </div>
@@ -1909,102 +1903,117 @@ button { cursor: pointer; font-family: inherit; }
             </div>
           </div>
 
+        <div class="init-card" id="init-9">
+          <div class="init-header" onclick="toggleInit(this)">
+            <div class="init-num" style="background:var(--brand)">9</div>
+            <div class="init-name">Retiro de efectivo desde POS</div>
+            <div class="init-meta">
+              <span>Fecha: 3Q27</span>
+              <span>Responsable: Beatriz Mej&#237;a</span>
+              <span class="status-pill s-warn">&#128993; En proceso</span>
+            </div>
+            <span class="init-chevron">&#9660;</span>
+          </div>
+          <div class="init-body">
+            <div class="init-grid">
+              <div class="init-block">
+                <div class="init-block-label">Descripci&#243;n</div>
+                <div class="init-block-text">Proporcionar acceso inmediato a efectivo a nuestros clientes: ofrece liquidez inmediata, comodidad, seguridad y cero comisiones hacia Liverpool.</div>
+                <div class="init-block-label" style="margin-top:12px;">Impacto esperado</div>
+                <div class="init-block-text">
+                  <ul>
+                    <li>Tr&#225;fico en tiendas</li>
+                    <li>Servicio al cliente y fidelizaci&#243;n</li>
+                    <li># Retiros desde POS</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="init-block">
+                <div class="init-block-label">Hitos relevantes</div>
+                <div class="init-block-text">
+                  <ul>
+                    <li>Configuraci&#243;n del BIN 46969303 en POS</li>
+                    <li>Configuraci&#243;n de SKU en Servicios</li>
+                    <li>Retiro de efectivo m&#225;ximo de $2,000 pesos por txn</li>
+                    <li>Secciones de impulso de Retiro: c&#243;mputo, telefon&#237;a, zapater&#237;a, perfumer&#237;a y l&#237;nea blanca</li>
+                    <li>Capacitaci&#243;n a Fuerza de Venta Operaciones</li>
+                  </ul>
+                </div>
+                <div class="init-block-label" style="margin-top:12px;">Siguientes pasos</div>
+                <div class="init-block-text">
+                  <ul>
+                    <li>Cierre de documentaci&#243;n</li>
+                    <li>Confirmaci&#243;n de modelo operativo para atenci&#243;n en puntos de venta</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="init-block" style="background:#F4F4F4;border:1px solid #E0E0E0;">
+                <div class="init-block-label">Riesgos</div>
+                <div class="init-block-text">
+                  <div style="margin-bottom:10px;"><span class="status-pill s-warn">MED</span><br><span style="font-size:var(--text-xs);margin-top:4px;display:block;">Lentitud en el servicio por espera a la entrega de efectivo</span></div>
+                  <div style="margin-bottom:10px;"><span class="status-pill s-warn">MED</span><br><span style="font-size:var(--text-xs);margin-top:4px;display:block;">Manejo de efectivo limitado en tiendas por vendedor</span></div>
+                  <div><span class="status-pill s-warn">MED</span><br><span style="font-size:var(--text-xs);margin-top:4px;display:block;">Atenci&#243;n de aclaraciones bancarias</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="init-card" id="init-10">
+          <div class="init-header" onclick="toggleInit(this)">
+            <div class="init-num" style="background:var(--brand)">10</div>
+            <div class="init-name">Fondeo Activa por disposici&#243;n Tarjeta Cr&#233;dito</div>
+            <div class="init-meta">
+              <span>Fecha: 2Q27</span>
+              <span>Responsable: Beatriz Mej&#237;a</span>
+              <span class="status-pill s-warn">&#128993; En proceso</span>
+            </div>
+            <span class="init-chevron">&#9660;</span>
+          </div>
+          <div class="init-body">
+            <div class="init-grid">
+              <div class="init-block">
+                <div class="init-block-label">Descripci&#243;n</div>
+                <div class="init-block-text">Fondear Activa a trav&#233;s de disposici&#243;n en efectivo de tarjetas de cr&#233;dito.</div>
+                <div class="init-block-label" style="margin-top:12px;">Impacto esperado</div>
+                <div class="init-block-text">
+                  <ul>
+                    <li>Servicio al cliente</li>
+                    <li>Uso de la tarjeta. Transaccionalidad</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="init-block">
+                <div class="init-block-label">Hitos relevantes</div>
+                <div class="init-block-text">
+                  <ul>
+                    <li>La primer disposici&#243;n en efectivo sin cobro de comisi&#243;n ni IVA</li>
+                    <li>Segunda disposici&#243;n y subsecuentes con cobro de comisi&#243;n del 6.9% m&#225;s IVA</li>
+                    <li>Proceso manual en identificaci&#243;n de clientes Activa y su respectiva bonificaci&#243;n</li>
+                  </ul>
+                </div>
+                <div class="init-block-label" style="margin-top:12px;">Siguientes pasos</div>
+                <div class="init-block-text">
+                  <ul>
+                    <li>Confirmaci&#243;n con equipo Data Actinver de la identificaci&#243;n de tarjeta origen para su bonificaci&#243;n correspondiente</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="init-block" style="background:#F4F4F4;border:1px solid #E0E0E0;">
+                <div class="init-block-label">Riesgos</div>
+                <div class="init-block-text">
+                  <div><span class="status-pill s-warn">MED</span><br><span style="font-size:var(--text-xs);margin-top:4px;display:block;">Obtenci&#243;n &#225;gil de transaccionalidad por disposici&#243;n de efectivo</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div><!-- /dtab-proyectos -->
 
       <!-- ══════════════════════════════════════
            08 · PENDIENTES STEERCO
       ══════════════════════════════════════ -->
-      <div class="dash-panel active" id="dtab-pendientes" data-title="08 · Pendientes último SteerCo">
-        <div class="section-label" style="margin-top:0">3 puntos de seguimiento abiertos del último SteerCo</div>
-
-        <div class="pendiente-card">
-          <div class="pendiente-letter">A</div>
-          <div class="pendiente-body">
-            <div class="pendiente-title">&#191;Cu&#225;ntos clientes tienen dinero en Cuenta Eje vs Fondos?</div>
-            <div class="pendiente-desc" style="margin-bottom:14px;">De los <strong>18,572 clientes con saldo en Cuenta Eje</strong>, el impacto de Rendimientos Din&#225;micos no es uniforme. La distinci&#243;n cr&#237;tica est&#225; en el segmento bajo.</div>
-            <div style="margin-bottom:16px;overflow-x:auto;">
-              <table style="width:100%;border-collapse:collapse;font-size:13px;">
-                <thead>
-                  <tr style="background:#0A0E12;color:white;">
-                    <th style="padding:9px 12px;text-align:left;font-weight:600;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;">Rango</th>
-                    <th style="padding:9px 12px;text-align:right;font-weight:600;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;">Clientes</th>
-                    <th style="padding:9px 12px;text-align:right;font-weight:600;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;">Promedio Cuenta Eje</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr style="border-bottom:1px solid #E5E7EB;">
-                    <td style="padding:9px 12px;font-weight:500;">Bajo (&lt;$5k)</td>
-                    <td style="padding:9px 12px;text-align:right;">16,348</td>
-                    <td style="padding:9px 12px;text-align:right;">$387</td>
-                  </tr>
-                  <tr style="border-bottom:1px solid #E5E7EB;">
-                    <td style="padding:9px 12px;font-weight:500;">Medio ($5k&#8211;$20k)</td>
-                    <td style="padding:9px 12px;text-align:right;">1,246</td>
-                    <td style="padding:9px 12px;text-align:right;">$9,596</td>
-                  </tr>
-                  <tr style="border-bottom:1px solid #E5E7EB;">
-                    <td style="padding:9px 12px;font-weight:500;">Alto (&gt;$20k)</td>
-                    <td style="padding:9px 12px;text-align:right;">978</td>
-                    <td style="padding:9px 12px;text-align:right;">$60,210</td>
-                  </tr>
-                  <tr style="background:#F9FAFB;font-weight:700;">
-                    <td style="padding:9px 12px;">Total</td>
-                    <td style="padding:9px 12px;text-align:right;">18,572</td>
-                    <td style="padding:9px 12px;text-align:right;">$4,155</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
-              <div style="padding:12px 14px;background:rgba(204,51,51,0.05);border:1px solid rgba(204,51,51,0.2);border-left:3px solid #CC3333;border-radius:6px;">
-                <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#CC3333;margin-bottom:8px;">Segmento bajo &#8212; los m&#225;s afectados</div>
-                <div style="font-size:13px;color:#6B7280;line-height:1.7;"><strong>16,348 clientes</strong> con saldo promedio de <strong>$387</strong>.<br>Hoy ganan <strong>3.15%</strong> (50% CETES al 6.3%) &#8594; pasan a <strong>1.0%</strong> fijo.<br>P&#233;rdida por cliente: <strong>~$8.32/a&#241;o &middot; $0.69/mes</strong>.<br>Impacto total: <strong>&#8722;$136,024/a&#241;o</strong>.</div>
-              </div>
-              <div style="padding:12px 14px;background:rgba(26,158,90,0.05);border:1px solid rgba(26,158,90,0.2);border-left:3px solid #1A9E5A;border-radius:6px;">
-                <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#1A9E5A;margin-bottom:8px;">Segmentos medio y alto &#8212; se benefician</div>
-                <div style="font-size:13px;color:#6B7280;line-height:1.7;"><strong>2,224 clientes</strong> con saldos de $9,596 y $60,210 promedio.<br>Pasan a tramos de <strong>3%/4%</strong> y <strong>6%/7%</strong>.<br>Pueden adem&#225;s mover a fondos para potenciar su rendimiento.</div>
-              </div>
-            </div>
-            <div style="padding:10px 14px;background:#F9FAFB;border:1px solid #E5E7EB;border-left:3px solid #0A0E12;border-radius:6px;margin-bottom:14px;">
-              <div style="font-size:12px;line-height:1.6;"><strong>Implicaci&#243;n:</strong> La p&#233;rdida en pesos es m&#237;nima (~$0.69/mes por cliente). El riesgo real es de <em>percepci&#243;n</em>, no de p&#233;rdida material &#8212; la palanca es comunicaci&#243;n proactiva, no cambios en la parametrizaci&#243;n.</div>
-            </div>
-            <div class="pendiente-meta">
-              <span class="meta-tag">Responsable: Diego Sol&#237;s</span>
-              <span class="status-pill s-warn">Actualizar estatus</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pendiente-card">
-          <div class="pendiente-letter" style="background:#CC3333;">B</div>
-          <div class="pendiente-body">
-            <div class="pendiente-title">Apertura dual Liverpool + Activa &#8212; Conclusi&#243;n legal</div>
-            <div class="pendiente-desc" style="margin-bottom:14px;">La Autoridad Financiera es extremadamente cuidadosa en regular la forma en que los bancos autentican a sus clientes y comparten su informaci&#243;n. Hay obligaciones que los bancos tienen que cumplir directamente y de una forma espec&#237;fica.</div>
-            <ul style="font-size:14px;line-height:1.8;color:var(--text-primary);padding-left:20px;margin-bottom:14px;">
-              <li>No se permite que un cliente bancario tenga acceso a las operaciones del Banco a trav&#233;s de la autenticaci&#243;n que haga un tercero.</li>
-              <li>Los bancos tienen que hacer directamente el proceso digital de onboarding.</li>
-              <li>Otra opci&#243;n son los comisionistas de base tecnol&#243;gica, pero &#233;stos solo pueden realizar operaciones limitadas que no incluyen las operaciones de Activa.</li>
-            </ul>
-            <div class="pendiente-meta" style="margin-top:10px;">
-              <span class="meta-tag">Responsable: Alonso Cervantes</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pendiente-card">
-          <div class="pendiente-letter">C</div>
-          <div class="pendiente-body">
-            <div class="pendiente-title">Plan de respuesta ante incidencias recurrentes OTP/SMS</div>
-            <div class="pendiente-desc">Definici&#243;n de plan de acci&#243;n ante las incidencias recurrentes de OTP por SMS. Incluye evaluaci&#243;n de proveedor alternativo o esquema de redundancia para garantizar disponibilidad del flujo de activaci&#243;n de cuenta.</div>
-            <div class="pendiente-meta">
-              <span class="meta-tag">Responsable: Juan Aguilar</span>
-              <span class="status-pill s-warn">Actualizar estatus</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
       <!-- ══════════════════════════════════════
            TAB 06: DATA ANALYTICS
       ══════════════════════════════════════ -->
